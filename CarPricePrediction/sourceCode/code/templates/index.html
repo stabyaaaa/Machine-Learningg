@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <!--Bootstrap CSS for styling-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header", style="text-align: center;">
+        <h1>Welcome to Car Price Prediction</h1>
+    </div>
+    <div class="container">
+        <!-- Form for user input -->
+        <form method="POST">
+            <!-- Dropdown menu for selecting car model name from csv -->
+            <div class="form-group">
+                <label for="model_name">Model Name:</label>
+                <select id="model_name" name="model_name" class="form-control" required>
+                    {% for name in model_names %}
+                    <!-- Dropdown options with model names from the csv -->
+                    <option value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- Dropdown menu for selecting car manufacture year -->
+            <div class="form-group">
+                <label for="year">Manufacture Year:</label>
+                <select id="year" name="year" class="form-control" required>
+                    {% for year in manufacture_years %}
+                    <!-- Populate dropdown options with manufacture years from the csv -->
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- Dropdown menu for selecting fuel type -->
+            <div class="form-group">
+                <label for="fuel_type">Fuel Type:</label>
+                <select id="fuel_type" name="fuel_type" class="form-control" required>
+                    {% for fuel in fuel_types %}
+                    <!-- Populate dropdown options with fuel types from the csv -->
+                    <option value="{{ fuel }}">{{ fuel }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- Input foe entering max power -->
+            <div class="form-group">
+                <label for="max_power">Max Power:</label>
+                <input type="text" id="max_power" name="max_power" class="form-control" required>
+            </div>
+            <!-- Input foe entering engine size -->
+            <div class="form-group">
+                <label for="engine">Engine Size:</label>
+                <input type="text" id="engine" name="engine" class="form-control" required>
+            </div>
+            <!-- SUbmit button -->
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <!-- Display predicted selling price if available -->
+        {% if predicted_price %}
+        <div class="result">
+            <h2>Predicted Selling Price:</h2>
+            <!-- Display the predicted selling price -->
+            <p>{{ predicted_price }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

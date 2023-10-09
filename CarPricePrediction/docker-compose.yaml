@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  dash:
+    image: stabya45/car_price_prediction:v0.1
+    build: 
+      context: .
+      dockerfile: dash.Dockerfile
+    volumes:
+      - ./.vscode-server:/root/.vscode-server
+      - ./sourceCode:/root/sourceCode
+    ports:
+      - 9999:8050
+      
+
